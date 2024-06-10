@@ -2,10 +2,10 @@ import JustPushMessage from './src/services/JustPushMessage.js'
 
 const test = async () => {
     try {
-        // Create a new message
         const justPushMessage = JustPushMessage.token(
             '7W6rAhothzVrT6CBqMmtPiDukjhWJXKU'
         )
+            .topic('JavascriptSDK')
             .message('Here is a sample Message')
             .title('Test Title')
             .lowPriority()
