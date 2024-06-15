@@ -18,7 +18,7 @@ Welcome to the official JavaScript SDK for JustPush! This SDK allows you to easi
 Install the SDK via npm:
 
 ```bash
-npm i @justpush/justpush-php-sdk
+npm i @justpush/justpush-js-sdk
 
 ```
 
