@@ -64,6 +64,7 @@ class JustPushTopic extends JustPushBase {
         if (!this.topicUuid) {
             throw new Error('Topic UUID must be set before calling update.')
         }
+        console.log(JSON.stringify(this, null, 4))
         return await this.request(
             `${JustPushTopic.ENDPOINT}/${this.topicUuid}`,
             {
