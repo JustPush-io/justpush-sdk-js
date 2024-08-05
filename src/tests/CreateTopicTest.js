@@ -1,9 +1,14 @@
 import JustPushTopic from '../services/JustPushTopic.js'
+import { ACCESS_TOKEN } from './TestConstants.js'
 
 const test = async () => {
     try {
-        const justPushTopic =
-            JustPushTopic.token('ACCESS_TOEKN').title('Image test1')
+        console.log('Create topic...')
+        const justPushTopic = JustPushTopic.token(ACCESS_TOKEN)
+            .title('My Car')
+            .avatar(
+                'https://images.pexels.com/photos/25961190/pexels-photo-25961190/free-photo-of-the-audi-a3-sedan-parked-in-front-of-a-mountain.jpeg?auto=compress&cs=tinysrgb&w=800'
+            )
 
         const response = await justPushTopic.create()
         console.log(
@@ -17,13 +22,13 @@ const test = async () => {
         // Retrieve the message
         const topicKey = response.uuid
 
-        const topicGet = await JustPushTopic.token('ACCESS_TOEKN')
+        const topicGet = await JustPushTopic.token(ACCESS_TOKEN)
             .topic(topicKey)
             .get()
 
         console.log('Get topic data:', JSON.stringify(topicGet, null, 2))
 
-        const topic = await JustPushTopic.token('ACCESS_TOKEN')
+        const topic = await JustPushTopic.token(ACCESS_TOKEN)
             .topic(topicKey)
             .update()
 
@@ -33,4 +38,4 @@ const test = async () => {
     }
 }
 
-export { test }
+test()

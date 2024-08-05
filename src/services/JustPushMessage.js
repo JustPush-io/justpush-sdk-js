@@ -103,15 +103,27 @@ class JustPushMessage extends JustPushBase {
 
     acknowledge(
         requiresAcknowledgement,
-        callbackRequired = false,
         callbackUrl = null,
-        callbackParams = null
+        callbackParams = null,
+        requiresRetry = true,
+        retryInterval = 60,
+        maxRetries = 10,
+        callbackRequired = false
     ) {
+        let retryIntervalPayload = {}
+        if (requiresRetry) {
+            retryIntervalPayload = {
+                requires_retry: requiresRetry,
+                retry_interval: retryInterval,
+                max_retries: maxRetries,
+            }
+        }
         this.messageParams['acknowledgement'] = {
             requires_acknowledgement: requiresAcknowledgement,
             callback_required: callbackRequired,
             callback_url: callbackUrl,
             callback_params: callbackParams,
+            ...retryIntervalPayload,
         }
         return this
     }
@@ -130,6 +142,11 @@ class JustPushMessage extends JustPushBase {
             throw new Error('Message key must be set before calling get.')
         }
         console.log('Get for key: ', this.messageParams['key'])
+        console.log('This: ', JSON.stringify(this, null, 4))
+        console.log(
+            'Endpoint: ',
+            `${JustPushMessage.ENDPOINT}/${this.messageParams['key']}`
+        )
         return await this.request(
             `${JustPushMessage.ENDPOINT}/${this.messageParams['key']}`,
             {

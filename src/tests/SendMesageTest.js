@@ -1,10 +1,11 @@
 import JustPushMessage from '../services/JustPushMessage.js'
+import { ACCESS_TOKEN } from './TestConstants.js'
 
 const test = async () => {
     try {
-        const justPushMessage = JustPushMessage.token('ACCESS_TOKEN')
-            .topic('Image test1"')
-            .message('Here is a sample Message10')
+        const justPushMessage = JustPushMessage.token(ACCESS_TOKEN)
+            .topic('JavascriptSDK')
+            .message('Here is a sample Message')
             .image(
                 'https://i2.wp.com/www.learnsteps.com/wp-content/uploads/2017/04/what-is-a-hyperlink-with-pictures-UDZ66a-clipart.jpg?fit=1000%2C740&ssl=1',
                 'Test caption'
@@ -25,6 +26,7 @@ const test = async () => {
                 'https://i2.wp.com/www.learnsteps.com/wp-content/uploads/2017/04/what-is-a-hyperlink-with-pictures-UDZ66a-clipart.jpg?fit=1000%2C740&ssl=1',
                 'Test caption'
             )
+            .acknowledge(true, 'https://www.google.ro')
             .title('Test Title')
             .lowPriority()
             .button('Button 1', 'https://google.com', true)
@@ -36,11 +38,11 @@ const test = async () => {
         )
 
         // Wait for 5 seconds
-        await new Promise((resolve) => setTimeout(resolve, 10000))
+        await new Promise((resolve) => setTimeout(resolve, 5000))
 
         // Retrieve the message
         const messageKey = response.key
-        const message = await JustPushMessage.token('ACCESS_TOEKN')
+        const message = await JustPushMessage.token(ACCESS_TOKEN)
             .key(messageKey)
             .get()
 
@@ -50,4 +52,4 @@ const test = async () => {
     }
 }
 
-export { test }
+test()
