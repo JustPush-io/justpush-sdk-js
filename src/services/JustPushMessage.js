@@ -129,7 +129,6 @@ class JustPushMessage extends JustPushBase {
     }
 
     async create() {
-        console.log('Body: ', JSON.stringify(this.messageParams, null, 4))
         return await this.request(JustPushMessage.ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -141,12 +140,6 @@ class JustPushMessage extends JustPushBase {
         if (!this.messageParams['key']) {
             throw new Error('Message key must be set before calling get.')
         }
-        console.log('Get for key: ', this.messageParams['key'])
-        console.log('This: ', JSON.stringify(this, null, 4))
-        console.log(
-            'Endpoint: ',
-            `${JustPushMessage.ENDPOINT}/${this.messageParams['key']}`
-        )
         return await this.request(
             `${JustPushMessage.ENDPOINT}/${this.messageParams['key']}`,
             {

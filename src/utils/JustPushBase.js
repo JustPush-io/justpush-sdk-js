@@ -23,7 +23,6 @@ class JustPushBase {
     async request(endpoint, options = {}) {
         const url = `${JustPushBase.JUSTPUSH_API_URL}${endpoint}`
         const headers = this.baseHeaders()
-
         const fetchOptions = {
             ...options,
             headers: {
