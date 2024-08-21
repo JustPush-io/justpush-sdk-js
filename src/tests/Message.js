@@ -63,7 +63,7 @@ const test = async () => {
         const lastMessage = await sendButtonsMesage()
 
         // Wait for 5 seconds
-        await new Promise((resolve) => setTimeout(resolve, 5000))
+        await new Promise((resolve) => setTimeout(resolve, 8000))
 
         // Retrieve the message
         await getMessage(lastMessage.key)

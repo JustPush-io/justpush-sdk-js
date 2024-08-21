@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js",
-        "test": "node src/tests/Topic.js && node src/tests/Mesage.js"
+        "test": "node src/tests/Topic.js && node src/tests/Message.js"
     },
     "author": "",
     "license": "ISC",
