@@ -1,12 +1,13 @@
 {
-    "name": "@justpush/justpush-js-sdk",
-    "version": "1.0.1",
+    "name": "@justpush.io/justpush-js-sdk",
+    "version": "1.0.2",
     "description": "",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js",
-        "test": "node src/tests/Topic.js && node src/tests/Message.js"
+        "test": "node src/tests/Topic.js && node src/tests/Message.js",
+        "publish": "npm publish --access public"
     },
     "author": "",
     "license": "ISC",
