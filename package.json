@@ -1,11 +1,9 @@
 {
     "name": "@justpush.io/justpush-js-sdk",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "This is the JustPush JavaScript SDk. It facilites sending messages to the JustPush mobile app.",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
-        "dev": "nodemon index.js",
         "test": "node src/tests/Topic.js && node src/tests/Message.js",
         "publish": "npm publish --access public"
     },

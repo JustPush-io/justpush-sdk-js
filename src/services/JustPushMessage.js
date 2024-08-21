@@ -122,7 +122,7 @@ class JustPushMessage extends JustPushBase {
             requires_acknowledgement: requiresAcknowledgement,
             callback_required: callbackRequired,
             callback_url: callbackUrl,
-            callback_params: callbackParams,
+            callback_params: JSON.stringify(callbackParams),
             ...retryIntervalPayload,
         }
         return this
