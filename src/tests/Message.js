@@ -17,16 +17,15 @@ const sendSimpleTextMesage = async () => {
 
 const sendImageMesage = async () => {
     console.log('Send image message...')
-    const IMAGE_PROCESSED_PAYLOAD = { ...IMAGE_PAYLOAD }
     return await JustPushMessage.token(ACCESS_TOKEN)
         .topic('TestTopic')
         .title('Test Title')
         .message('Here is a massage with images')
-        .image(...IMAGE_PROCESSED_PAYLOAD)
-        .image(...IMAGE_PROCESSED_PAYLOAD)
-        .image(...IMAGE_PROCESSED_PAYLOAD)
-        .image(...IMAGE_PROCESSED_PAYLOAD)
-        .image(...IMAGE_PROCESSED_PAYLOAD)
+        .image(IMAGE_PAYLOAD[0], IMAGE_PAYLOAD[1])
+        .image(IMAGE_PAYLOAD[0], IMAGE_PAYLOAD[1])
+        .image(IMAGE_PAYLOAD[0], IMAGE_PAYLOAD[1])
+        .image(IMAGE_PAYLOAD[0], IMAGE_PAYLOAD[1])
+        .image(IMAGE_PAYLOAD[0], IMAGE_PAYLOAD[1])
         .create()
 }
 
