@@ -1,6 +1,6 @@
 {
     "name": "@justpush.io/justpush-js-sdk",
-    "version": "1.0.7",
+    "version": "1.0.12",
     "description": "This is the JustPush JavaScript SDK. It facilites sending messages to the JustPush mobile app.",
     "main": "index.js",
     "scripts": {
@@ -13,7 +13,7 @@
         "nodemon": "3.1.3"
     },
     "dependencies": {
-        "node-fetch": "3.3.2"
+        "node-fetch": "2.6.1"
     },
     "type": "module",
     "homepage": "https://github.com/JustPush-io/justpush-sdk-js"
