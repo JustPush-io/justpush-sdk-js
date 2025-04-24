@@ -6,6 +6,14 @@ class JustPushBase {
 
     constructor() {
         this.headers = {}
+        // Dynamically import node-fetch in Node.js environment
+        if (typeof window === 'undefined') {
+            import('node-fetch').then(module => {
+                this.fetch = module.default
+            })
+        } else {
+            this.fetch = window.fetch.bind(window)
+        }
     }
 
     setToken(token) {
@@ -32,7 +40,9 @@ class JustPushBase {
         }
 
         try {
-            const response = await fetch(url, fetchOptions)
+            // Use the appropriate fetch implementation
+            const fetchImpl = this.fetch || fetch
+            const response = await fetchImpl(url, fetchOptions)
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`)
             }
