@@ -1,6 +1,6 @@
 import JustPushBase from '../utils/JustPushBase.js'
 
-class JustPushTopic extends JustPushBase {
+export class JustPushTopic extends JustPushBase {
     static ENDPOINT = '/topics'
 
     constructor(token) {
@@ -79,5 +79,3 @@ class JustPushTopic extends JustPushBase {
         return this.topicParams
     }
 }
-
-export default JustPushTopic

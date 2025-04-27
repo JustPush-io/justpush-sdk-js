@@ -1,4 +1,4 @@
-import JustPushMessage from '../services/JustPushMessage.js'
+import { JustPushMessage } from '../services/JustPushMessage.js'
 import { ACCESS_TOKEN } from './TestConstants.js'
 
 const IMAGE_PAYLOAD = [

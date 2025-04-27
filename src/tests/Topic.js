@@ -1,4 +1,4 @@
-import JustPushTopic from '../services/JustPushTopic.js'
+import { JustPushTopic } from '../services/JustPushTopic.js'
 import { ACCESS_TOKEN } from './TestConstants.js'
 
 const TEST_AVATAR_URL =

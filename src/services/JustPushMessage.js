@@ -1,6 +1,6 @@
 import JustPushBase from '../utils/JustPushBase.js'
 
-class JustPushMessage extends JustPushBase {
+export class JustPushMessage extends JustPushBase {
     static ENDPOINT = '/messages'
 
     constructor(token) {
@@ -153,4 +153,3 @@ class JustPushMessage extends JustPushBase {
     }
 }
 
-export default JustPushMessage
