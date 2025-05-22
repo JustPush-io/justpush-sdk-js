@@ -85,12 +85,12 @@ const response = await JustPushMessage.token("REPLACE_WITH_USER_TOKEN")
         {
           cta: "Button 1",
           url: "https://google.com",
-          requires_action: true,
+          action_required: true,
         },
         {
           cta: "Button 2",
           url: "https://google.com",
-          requires_action: true,
+          action_required: true,
         },
       ],
     },
@@ -102,12 +102,12 @@ const response = await JustPushMessage.token("REPLACE_WITH_USER_TOKEN")
         {
           cta: "Button 1",
           url: "https://google.com",
-          requires_action: true,
+          action_required: true,
         },
         {
           cta: "Button 2",
           url: "https://google.com",
-          requires_action: true,
+          action_required: true,
         },
       ],
     },
@@ -132,7 +132,7 @@ Each button in the `buttons` array has these fields:
 | ----------------- | ------- | -------- | ---------------------------------------------------- |
 | `cta`             | string  | Yes      | The text displayed on the button                     |
 | `url`             | string  | Yes      | The URL the button links to                          |
-| `requires_action` | boolean | Yes      | Whether user interaction is required for this button |
+| `action_required` | boolean | Yes      | Whether user interaction is required for this button |
 
 ### Setting an Expiry
 
