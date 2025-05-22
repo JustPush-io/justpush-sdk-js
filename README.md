@@ -115,6 +115,25 @@ const response = await JustPushMessage.token("REPLACE_WITH_USER_TOKEN")
   .create();
 ```
 
+#### Button Group Object Fields
+
+Each button group object has the following fields:
+
+| Field             | Type    | Required | Description                                         |
+| ----------------- | ------- | -------- | --------------------------------------------------- |
+| `name`            | string  | Yes      | The name/title of the button group                  |
+| `cta`             | string  | Yes      | The call-to-action text for the group               |
+| `action_required` | boolean | Yes      | Whether user interaction is required for this group |
+| `buttons`         | array   | Yes      | Array of button objects within the group            |
+
+Each button in the `buttons` array has these fields:
+
+| Field             | Type    | Required | Description                                          |
+| ----------------- | ------- | -------- | ---------------------------------------------------- |
+| `cta`             | string  | Yes      | The text displayed on the button                     |
+| `url`             | string  | Yes      | The URL the button links to                          |
+| `action_required` | boolean | Yes      | Whether user interaction is required for this button |
+
 ### Setting an Expiry
 
 When a expiry is set, the message will have an TTL in seconds. After the expiry, in seconds, has expired, the message will automatically be hidden.
