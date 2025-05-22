@@ -6,10 +6,10 @@ Welcome to the official JavaScript SDK for JustPush! This SDK allows you to easi
 
 ## Features
 
--   **Create Messages**: Send messages effortlessly using our streamlined API.
--   **Retrieve Messages**: Fetch messages with ease for seamless integration and processing.
--   **Create Topics**: Organize your messages by creating specific topics.
--   **Update Topics**: Modify existing topics to keep your message structure flexible and up-to-date.
+- **Create Messages**: Send messages effortlessly using our streamlined API.
+- **Retrieve Messages**: Fetch messages with ease for seamless integration and processing.
+- **Create Topics**: Organize your messages by creating specific topics.
+- **Update Topics**: Modify existing topics to keep your message structure flexible and up-to-date.
 
 ## Download the App in the App Stores
 
@@ -27,10 +27,10 @@ npm i @justpush.io/justpush-js-sdk
 This is a basic example of sending a notification.
 
 ```js
-const response = await JustPushMessage.token('REPLACE_WITH_USER_TOKEN')
-    .message('Here is a sample Message')
-    .title('Test Title')
-    .create()
+const response = await JustPushMessage.token("REPLACE_WITH_USER_TOKEN")
+  .message("Here is a sample Message")
+  .title("Test Title")
+  .create();
 ```
 
 # JustPush Message
@@ -45,6 +45,7 @@ const response = await JustPushMessage.token('REPLACE_WITH_USER_TOKEN')
 | `images`          | `array $images`                                                                                                                                                                                                    | Adds multiple images                                                     |
 | `button`          | `string $cta`, `string $url`, `bool $actionRequired`                                                                                                                                                               | Adds a button to the message                                             |
 | `buttons`         | `array $buttons`                                                                                                                                                                                                   | Adds multiple buttons to the message                                     |
+| `buttonGroups`    | `array $buttonGroups`                                                                                                                                                                                              | Adds groups of buttons to the message, each with its own name and CTA    |
 | `sound`           | `string $sound`                                                                                                                                                                                                    | Define the sound of the message                                          |
 | `priority`        | `int`                                                                                                                                                                                                              | Manually set the priority, `2`, `1`, `0`, `-1`, `-2`                     |
 | `highestPriority` |                                                                                                                                                                                                                    | Set the message priority on `2`                                          |
@@ -59,12 +60,60 @@ const response = await JustPushMessage.token('REPLACE_WITH_USER_TOKEN')
 
 Our goals it to keep the API as simple as possible. Therefore, you can send either:
 
--   **Topic Title** - When the title exists more than once, the oldest topic will be used. If the name is not in your topic list, a new topic will be created.
--   **Topic UUID** - Uses the exact match of the topic
+- **Topic Title** - When the title exists more than once, the oldest topic will be used. If the name is not in your topic list, a new topic will be created.
+- **Topic UUID** - Uses the exact match of the topic
 
 ### Sending multiple images
 
 When a message contains multiple images, the first image will be used for the push message banner.
+
+### Using Button Groups
+
+You can organize buttons into groups, each with its own name and call-to-action. Here's an example:
+
+```js
+const response = await JustPushMessage.token("REPLACE_WITH_USER_TOKEN")
+  .topic("TestTopic")
+  .title("Test Title")
+  .message("Here is a message with button groups")
+  .buttonGroups([
+    {
+      name: "Group 1",
+      cta: "Group 1 Cta",
+      action_required: true,
+      buttons: [
+        {
+          cta: "Button 1",
+          url: "https://google.com",
+          action_required: true,
+        },
+        {
+          cta: "Button 2",
+          url: "https://google.com",
+          action_required: true,
+        },
+      ],
+    },
+    {
+      name: "Group 2",
+      cta: "Group 2 Cta",
+      action_required: true,
+      buttons: [
+        {
+          cta: "Button 1",
+          url: "https://google.com",
+          action_required: true,
+        },
+        {
+          cta: "Button 2",
+          url: "https://google.com",
+          action_required: true,
+        },
+      ],
+    },
+  ])
+  .create();
+```
 
 ### Setting an Expiry
 
@@ -85,9 +134,9 @@ When a expiry is set, the message will have an TTL in seconds. After the expiry,
 This is a basic example of creating a topic
 
 ```js
-const response = await JustPushTopic.token('REPLACE_WITH_USER_TOKEN')
-    .title('New Topic')
-    .create()
+const response = await JustPushTopic.token("REPLACE_WITH_USER_TOKEN")
+  .title("New Topic")
+  .create();
 ```
 
 ## PUT / Update A Topic
@@ -95,10 +144,10 @@ const response = await JustPushTopic.token('REPLACE_WITH_USER_TOKEN')
 This is a basic example of updating a topic
 
 ```js
-$response = JustPushTopic.token('REPLACE_WITH_USER_TOKEN')
-    .topic('REPLACE_WITH_TOPIC_UUID')
-    .title('New Topic Title')
-    .update()
+$response = JustPushTopic.token("REPLACE_WITH_USER_TOKEN")
+  .topic("REPLACE_WITH_TOPIC_UUID")
+  .title("New Topic Title")
+  .update();
 ```
 
 ## GET / Get a topic
@@ -106,9 +155,9 @@ $response = JustPushTopic.token('REPLACE_WITH_USER_TOKEN')
 This is a basic example of creating a topic
 
 ```js
-const response = await JustPushTopic.token('REPLACE_WITH_USER_TOKEN')
-    .topic('REPLACE_WITH_TOPIC_UUID')
-    .get()
+const response = await JustPushTopic.token("REPLACE_WITH_USER_TOKEN")
+  .topic("REPLACE_WITH_TOPIC_UUID")
+  .get();
 ```
 
 ## OpenApi Spec
@@ -117,4 +166,4 @@ The package comes with an OpenAPI spec. Which can be found in the `docs` folder.
 
 ## Changelog
 
--   `n/a` - No changes yet.
+- `n/a` - No changes yet.
