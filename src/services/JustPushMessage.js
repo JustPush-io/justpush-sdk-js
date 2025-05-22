@@ -51,11 +51,11 @@ export class JustPushMessage extends JustPushBase {
     return this;
   }
 
-  button(cta, url, actionRequired = false) {
+  button(cta, url, action_required = false) {
     if (!this.messageParams["buttons"]) {
       this.messageParams["buttons"] = [];
     }
-    this.messageParams["buttons"].push({ cta, url, actionRequired });
+    this.messageParams["buttons"].push({ cta, url, action_required });
     return this;
   }
 

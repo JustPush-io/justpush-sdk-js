@@ -36,10 +36,10 @@ const sendAckMesage = async () => {
     .create();
 };
 
-const sendButtonsMesage = async () => {
+const sendButtonsMessage = async () => {
   console.log("Send button message...");
   return await JustPushMessage.token(ACCESS_TOKEN)
-    .topic("TestTopic")
+    .topic("Q5 Tracker")
     .title("Test Title")
     .message("Here is a message with ack")
     .acknowledge(true, "https://www.google.ro")
@@ -62,17 +62,17 @@ const sendButtonGroupsMessage = async () => {
           {
             cta: "Button 1",
             url: "https://google.com",
-            action_required: true,
+            requires_action: true,
           },
           {
             cta: "Button 2",
             url: "https://google.com",
-            action_required: true,
+            requires_action: true,
           },
           {
             cta: "Button 3",
             url: "https://google.com",
-            action_required: true,
+            requires_action: true,
           },
         ],
       },
@@ -84,17 +84,17 @@ const sendButtonGroupsMessage = async () => {
           {
             cta: "Button 1",
             url: "https://google.com",
-            action_required: true,
+            requires_action: true,
           },
           {
             cta: "Button 2",
             url: "https://google.com",
-            action_required: true,
+            requires_action: true,
           },
           {
             cta: "Button 3",
             url: "https://google.com",
-            action_required: true,
+            requires_action: true,
           },
         ],
       },
@@ -113,7 +113,7 @@ const test = async () => {
     await sendImageMesage();
     await sendAckMesage();
     await sendButtonGroupsMessage();
-    const lastMessage = await sendButtonsMesage();
+    const lastMessage = await sendButtonsMessage();
 
     // Wait for 5 seconds
     await new Promise((resolve) => setTimeout(resolve, 8000));

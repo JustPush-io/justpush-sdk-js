@@ -1,6 +1,6 @@
 {
     "name": "@justpush.io/justpush-js-sdk",
-    "version": "1.1.7",
+    "version": "1.1.9",
     "description": "JustPush JavaScript SDK for React and Node.js. Send messages to the JustPush mobile app.",
     "main": "./dist/cjs/index.js",
     "browser": "./dist/esm/index.js",
