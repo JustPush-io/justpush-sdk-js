@@ -32,17 +32,16 @@ const sendAckMessage = async () => {
     .topic("TestTopic")
     .title("Test Title")
     .message("Here is a message with ack")
-    .acknowledge(
-      true,
-      "https://webhook.site/6c19f1ed-230c-4aa7-8679-5ea4e5eec345",
-      {
+    .acknowledge({
+      requiresAcknowledgement: true,
+      callbackUrl: "https://webhook.site/6c19f1ed-230c-4aa7-8679-5ea4e5eec345",
+      callbackParams: {
         test: "test",
       },
-      true,
-      60,
-      10,
-      true
-    )
+      requiresRetry: true,
+      retryInterval: 60,
+      maxRetries: 10,
+    })
     .create();
 };
 
@@ -52,8 +51,21 @@ const sendButtonsMessage = async () => {
     .topic("TestTopic")
     .title("Test Title")
     .message("Here is a message with ack")
-    .acknowledge(true, "https://www.google.ro")
-    .button("Button 1", "https://google.com", true)
+    .acknowledge({
+      requiresAcknowledgement: true,
+      callbackUrl: "https://webhook.site/6c19f1ed-230c-4aa7-8679-5ea4e5eec345",
+      callbackParams: {
+        test: "test",
+      },
+      requiresRetry: true,
+      retryInterval: 60,
+      maxRetries: 10,
+    })
+    .button({
+      cta: "Button 1",
+      url: "https://google.com",
+      action_required: true,
+    })
     .create();
 };
 

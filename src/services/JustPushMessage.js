@@ -51,7 +51,7 @@ export class JustPushMessage extends JustPushBase {
     return this;
   }
 
-  button(cta, url, action_required = false) {
+  button({ cta, url, action_required = false }) {
     if (!this.messageParams["buttons"]) {
       this.messageParams["buttons"] = [];
     }
@@ -109,14 +109,14 @@ export class JustPushMessage extends JustPushBase {
     return this;
   }
 
-  acknowledge(
+  acknowledge({
     requiresAcknowledgement,
     callbackUrl = null,
     callbackParams = null,
     requiresRetry = true,
     retryInterval = 60,
-    maxRetries = 10
-  ) {
+    maxRetries = 10,
+  } = {}) {
     let retryIntervalPayload = {};
     if (requiresRetry) {
       retryIntervalPayload = {
