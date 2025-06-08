@@ -1,2 +1,2 @@
 // ADD API TOKEN HERE FOR RUNNING TESTS
-export const ACCESS_TOKEN = "pul";
+export const ACCESS_TOKEN = "";
