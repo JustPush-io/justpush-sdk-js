@@ -3,7 +3,7 @@ import { ACCESS_TOKEN } from "./TestConstants.js";
 
 const IMAGE_PAYLOAD = ["https://picsum.photos/800/600", "Test caption"];
 
-const sendSimpleTextMesage = async () => {
+const sendSimpleTextMessage = async () => {
   console.log("Send simple text message...");
   return await JustPushMessage.token(ACCESS_TOKEN)
     .topic("TestTopic")
@@ -12,7 +12,7 @@ const sendSimpleTextMesage = async () => {
     .create();
 };
 
-const sendImageMesage = async () => {
+const sendImageMessage = async () => {
   console.log("Send image message...");
   return await JustPushMessage.token(ACCESS_TOKEN)
     .topic("TestTopic")
@@ -26,20 +26,30 @@ const sendImageMesage = async () => {
     .create();
 };
 
-const sendAckMesage = async () => {
+const sendAckMessage = async () => {
   console.log("Send ack message...");
   return await JustPushMessage.token(ACCESS_TOKEN)
     .topic("TestTopic")
     .title("Test Title")
     .message("Here is a message with ack")
-    .acknowledge(true, "https://www.google.ro")
+    .acknowledge(
+      true,
+      "https://webhook.site/6c19f1ed-230c-4aa7-8679-5ea4e5eec345",
+      {
+        test: "test",
+      },
+      true,
+      60,
+      10,
+      true
+    )
     .create();
 };
 
 const sendButtonsMessage = async () => {
   console.log("Send button message...");
   return await JustPushMessage.token(ACCESS_TOKEN)
-    .topic("Q5 Tracker")
+    .topic("TestTopic")
     .title("Test Title")
     .message("Here is a message with ack")
     .acknowledge(true, "https://www.google.ro")
@@ -109,15 +119,13 @@ const getMessage = async (messageKey) => {
 
 const test = async () => {
   try {
-    await sendSimpleTextMesage();
-    await sendImageMesage();
-    await sendAckMesage();
+    await sendSimpleTextMessage();
+    await sendImageMessage();
+    await sendAckMessage();
     await sendButtonGroupsMessage();
     const lastMessage = await sendButtonsMessage();
-
     // Wait for 5 seconds
     await new Promise((resolve) => setTimeout(resolve, 8000));
-
     // Retrieve the message
     await getMessage(lastMessage.key);
   } catch (error) {
